@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import Delete from './Delete';
 import Todo from './Todo';
 import View from './View';
 
@@ -31,11 +30,12 @@ const filter = arrCopy.filter((e)=>e.id !== text)
 updateHandler=(id,text)=>{
    console.log(text,id);
    const arrCopy = [... this.state.list]
-   const update = arrCopy.map((e)=>{
-       if(e.id !== id){
-            
+   const update = arrCopy.forEach((e)=>{
+       if(e.id === id){
+        e.todo=text
        }
     })
+    this.setState({list:update})
 
 }
 

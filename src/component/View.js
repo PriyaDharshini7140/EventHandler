@@ -1,12 +1,21 @@
 import React, {Component} from 'react';
-import Delete from './Delete';
+
 import Todo from './Todo';
 
 class View extends Component { 
+  constructor(props) { 
+    super(props); 
+    this.state= { 
+       add:this.props.add,
+    } 
+  } 
   
  render(){
-      const items = this.props.add.map((e)=>{return (<div key={e.id}>
-          {e.id}{e.todo}
+      // const  {add} = this.state
+      const items = this.state.add.map((e)=>{return (<div key={e.id}>
+          {e.id}
+          <input type="text" onChange={e=> this.setState({add:e.target.value})} value={this.state.add}/>
+          {e.todo}
            <button onClick={()=>{
               this.props.remove(e.id)
           }}>remove</button>
